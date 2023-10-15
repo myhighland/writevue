@@ -1,5 +1,5 @@
-let a = 1;
-let f = 2
+import { reactive,shallowReactive,shallowReadonly,readonly, } from "./reactive";
+
 export {
-    a,f
-}
+    reactive,shallowReactive,shallowReadonly,readonly,
+} 

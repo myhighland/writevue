@@ -1,3 +1,3 @@
-let a = 1
-let b = 7
-export { a, b }
+export function isObject(target) {
+    return typeof target === 'object' && target !== null;
+}
