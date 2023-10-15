@@ -1,9 +1,6 @@
 import { isObject } from "@vue3/shared"
+import { reactiveHandler,shallowReactiveHandler,readonlyHandler,shallowReadonlyHandler } from './baseHandlers'
 
-const reactiveHandler = {}
-const shallowReactiveHandler = {}
-const readonlyHandler = {}
-const shallowReadonlyHandler = {}
 
 export function reactive(target) {
     return createReactObj(target,false,reactiveHandler)
