@@ -39,6 +39,7 @@ function createReactObj(target,isReadonly,baseHandler) {
     }
    
     const proxy = new Proxy(target,baseHandler)
+    proxyMap.set(target,proxy)
     return proxy
     
 }
