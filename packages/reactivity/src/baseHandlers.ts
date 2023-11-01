@@ -1,6 +1,7 @@
 import { isObject } from "@vue3/shared"
 import { reactive,readonly } from "./reactive"
-
+import { TrackOpType } from "./operations"
+import { Track } from "./effects"
 const get = /*#__PURE__*/ createGetter()
 const shallowGet = /*#__PURE__*/ createGetter(false, true)
 const readonlyGet = /*#__PURE__*/ createGetter(true)
@@ -39,6 +40,7 @@ function createGetter(isReadonly = false,shallow = false) {
         const res = Reflect.get(target,key,receiver);//proxy 需要使用relect实现具体操作
         if(!isReadonly) {
             //收集依赖
+            Track(target,TrackOpType.GET,key)
         }
         if(shallow) {
             return res;
