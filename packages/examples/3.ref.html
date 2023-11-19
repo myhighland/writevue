@@ -10,21 +10,16 @@
     <div id="id"></div>
     <script src="../reactivity/dist/reactivity.global.js"></script>
     <script>
-        const {reactive,effect} = reactivity
-        let state = reactive({
-            name:'张三',
-            list:[1,2,3]
+       let {reactive,effect,ref} = reactivity;
+       //ref 将普通的数据类型实现代理 使用object.defineProperty实现
+       let name = ref('张三'); //返回一个实例对象 添加一个value = 值
+       effect(()=>{
+            document.getElementById('id').innerHTML = name.value;
         })
-        effect(()=>{
-            document.getElementById('id').innerHTML = state.name + state.list[2]
-        })
-       
         setTimeout(() => {
-            state.name = 'lisi'
-            state.age = 30
-            state.list = [1,2]
-            console.log(state)
+            name.value = '李四';
         }, 1000);
+    
     </script>
 </body>
 </html>

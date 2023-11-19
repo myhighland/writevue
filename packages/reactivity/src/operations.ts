@@ -1,4 +1,9 @@
 //操作符
 export const enum TrackOpType {
-    GET,
+    GET
+}
+
+export const enum TriggerOpType {
+    ADD,
+    SET
 }
