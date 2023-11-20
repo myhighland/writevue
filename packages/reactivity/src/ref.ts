@@ -60,9 +60,9 @@ class ObejectRefImpl {
 
 export function toRefs(target) {
     let ret = isArray(target) ? new Array(target.length) : {}
-    //遍历所有的属性 
-    return Object.keys(target).reduce((ret,key)=>{
+    //遍历所有的属性 将对象中的每个属性变为ref
+    for(let key in target) {
         ret[key] = toRef(target,key)
-        return ret
-    },{})
+    }
+    return ret
 }

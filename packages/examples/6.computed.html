@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id"></div>
+    <script src="../reactivity/dist/reactivity.global.js"></script>
+    <script>
+       let {reactive,effect,ref,toRefs,computed} = reactivity;
+       //torefs 将对象中的所有的属性都变成响应式
+       let age = ref(10);
+       let myAge = computed(()=>{
+            return age.value + 10;
+       })
+       console.log(myAge.value)
+       setTimeout(() => {
+            age.value = 20
+            console.log(myAge.value)
+       }, 1000);
+    </script>
+</body>
+</html>

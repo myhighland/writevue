@@ -10,7 +10,7 @@ const {
 //获取执行命令的参数
 const args = minimist(process.argv.slice(2)); //前两个是执行的命令 node script/dev.js
 console.log('参数',args);
-const target = args._[0] || 'reactivity'; //默认打包reactivity
+const target = args._[0] || 'runtime-dom'; //默认打包reactivity
 const format = args['f'] || 'global'; //默认打包reactivity
 
 const pkg = require(resolve(__dirname, `../packages/${target}/package.json`));

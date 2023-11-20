@@ -22,7 +22,7 @@ function createReactEffect(fn, options) {
             try {
                 effectStack.push(effect) //执行方法入栈
                 activeEffect = effect
-                fn()
+                return fn()
             } catch (error) {
 
             } finally {
@@ -105,7 +105,10 @@ export function trigger(target, type, key?, newValue?, oldValue?) {
          }
     }
     effectSet.forEach((effect:any)=>{
-        console.log(effect)
-        effect()
+        if(effect.options.sch) {
+            effect.options.sch() //computed dirty=true
+        } else  {
+            effect()
+        }
     })
 }
