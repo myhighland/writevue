@@ -2,6 +2,7 @@
 //     return typeof target === 'object' && target !== null;
 // }
 
+
 export const isObject = (target) => {
     return typeof target === 'object' && target !== null;
 };
@@ -21,3 +22,6 @@ export const isIntegerKey = (key) =>
   key[0] !== '-' &&
   '' + parseInt(key, 10) === key
 export const hasChange = (value,oldValue)=> value != oldValue
+
+//导出组件标识
+export * from './patchFlags'
