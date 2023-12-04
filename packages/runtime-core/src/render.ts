@@ -3,8 +3,18 @@
  */
 import { ShapeFlags } from "@vue3/shared";
 import { ApiCreateApp } from "./apiCreatApp"
-import { createComponentInstance, setupComponent,setupRenderEffect} from "./component";
+import { createComponentInstance, setupComponent} from "./component";
+import { effect } from "@vue3/reactivity";
 export function createRender(renderOptionDom) { 
+    function  setupRenderEffect(instance) {
+        //创建effect 在effect中该调用render 执行render时会收集effect
+        effect(function componentEffect() {
+            if(!instance.isMounted) {
+                let proxy = instance.proxy;
+                instance.render.call(proxy, proxy); //执行render
+            }
+        })
+    }
     const mountComponent = (InitialVnode,container) => {
         //组件渲染流程
         //1 先创建组件实例对象 render(proxy)
@@ -12,9 +22,10 @@ export function createRender(renderOptionDom) {
         //2 解析数据到这个实例对象中
         setupComponent(instance);
         //3 创建一个effect 让render函数执行
-        setupRenderEffect()
+        setupRenderEffect(instance)
 
     }
+    
     //组件创建
     const processComponent = (n1,n2,container) => {
         if(n1 == null) { //第一次加载

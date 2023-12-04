@@ -13,7 +13,13 @@
        let {createApp} = runtimeDom;
        let app = {
           setup(props,context) {
-            console.log('setup')
+            // return ()=>{
+            //   console.log('render',this)
+            // }
+          },
+          render(proxy) {
+            // console.log(proxy,this)
+            return h('div',{},'hello') //h()>>vnode>> 
           }
        }
        createApp(app,{name:'zhangsan',age:10}).mount('#app')

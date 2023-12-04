@@ -22,6 +22,11 @@ export const createVnode = (type,props,children=null)=> {
     return vnode;
 }
 
+export const isVnode = (vnode)=> {
+    //判断是否是虚拟dom
+    return vnode._v_isVnode;
+}
+
 function normalizeChildren(vnode,children) {
     let type = 0;
     if(children === null){
