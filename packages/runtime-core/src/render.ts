@@ -11,7 +11,8 @@ export function createRender(renderOptionDom) {
         effect(function componentEffect() {
             if(!instance.isMounted) {
                 let proxy = instance.proxy;
-                instance.render.call(proxy, proxy); //执行render 组件中创建渲染节点
+                let subTree = instance.render.call(proxy, proxy); //执行render 组件中创建渲染节点
+                console.log(subTree);
             }
         })
     }

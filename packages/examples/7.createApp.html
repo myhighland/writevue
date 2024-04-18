@@ -19,7 +19,7 @@
           },
           render(proxy) {
             // console.log(proxy,this)
-            return h('div',{},'hello') //h()>>vnode>> 
+            return h('div',{style:{color:'red'}},'hello') //h()>>vnode>> 
           }
        }
        createApp(app,{name:'zhangsan',age:10}).mount('#app')
